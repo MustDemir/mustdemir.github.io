@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mustafa Demir - Portfolio Website
 
-## Getting Started
+Eine moderne, responsive Portfolio-Website für **Technical Business Analyst & Cloud Solutions Architect**.
 
-First, run the development server:
+## 🚀 Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+Die Website ist live verfügbar unter: [mustafademir.github.io/mustafa-portfolio](https://mustafademir.github.io/mustafa-portfolio)
+
+## 📋 Inhalte
+
+- **Hero Section** – Einführung mit Profibild und Call-to-Action
+- **Expertise Stats** – Wichtigste Kennzahlen und Automotive-Logos
+- **Services** – Cloud Architecture, Requirements Engineering, Automotive, Business Analysis
+- **Berufserfahrung** – Detaillierte Accordions mit Werdegang-Timeline
+- **Erfolge & Projekte** – Highlights und Projektübersicht
+- **Technische Skills** – Kategorisierte Skills mit Tags und horizontale Zertifizierungs-Timeline
+- **Downloads** – PDF-Downloads für Zeugnisse, Zertifikate, Projekte, Publikationen
+- **Kontakt** – E-Mail, Telefon, Standort, Social Links
+
+## 📁 Projektstruktur
+
+```
+mustafa-portfolio/
+├── app/
+│   ├── index.html              # Hauptseite (vollständige Website)
+│   ├── styles/
+│   │   └── globals.css         # Globale Styles
+│   └── docs/                   # PDF-Downloads
+│       ├── zeugnisse.pdf
+│       ├── zertifikate.pdf
+│       ├── projekte.pdf
+│       └── veroeffentlichungen.pdf
+├── README.md                   # Diese Datei
+└── .gitignore                  # Git Ignore Rules
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Installation & Lokales Testen
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Repository klonen**
+   ```bash
+   git clone https://github.com/MustDemir/mustafa-portfolio.git
+   cd mustafa-portfolio
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Lokaler Server (Python)**
+   ```bash
+   python3 -m http.server 8000
+   ```
+   Dann im Browser öffnen: `http://localhost:8000/app/`
 
-## Learn More
+## 📥 PDF-Dateien hinzufügen
 
-To learn more about Next.js, take a look at the following resources:
+Die Download-Links verweisen auf einen `docs` Ordner:
+- `app/docs/zeugnisse.pdf`
+- `app/docs/zertifikate.pdf`
+- `app/docs/projekte.pdf`
+- `app/docs/veroeffentlichungen.pdf`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**PDF-Dateien hinzufügen:**
+```bash
+mkdir -p app/docs
+# PDF-Dateien in app/docs kopieren
+git add app/docs/
+git add app/docs/
+pPDF dpPDF dpPDF dpPDF dpPDF dpPDF dpPDF dpPDF dpPDF dpPDF dnt auf GitHub Pages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Konfiguration:
+1. GitHub Repository Settings öffnen
+2. **Pages** → Source: Branch `main`, Folder `/app`
+3. Nach 1-2 Minuten live auf: `https://MustDemir.github.io/mustafa-portfolio`
 
-## Deploy on Vercel
+## 🎨 Design & Styling
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Dark Theme** mit Blau (#3b82f6) & Teal (#14b8a6)
+- **Responsive** für alle Geräte
+- **Font Awesome Icons**
+- **Google Fonts (Inter)**
+- **Smooth Scrolling & Hover-Effekte**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔗 Kontakt
+
+- **LinkedIn:** [mustafa-demir-331900202](https://www.linkedin.com/in/mustafa-demir-331900202/)
+- **GitHub:** [MustDemir](https://github.com/MustDemir)
+- **E-Mail:** mu.demir@icloud.com
+- **Telefon:** +49 176 61322534
+
+## 📝 Lizenz
+
+© 2026 Mustafa Demir. Alle Rechte vorbehalten.
+
+---
+
+**Built with HTML5, CSS3, Vanilla JavaScript**
