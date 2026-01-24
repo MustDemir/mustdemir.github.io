@@ -768,83 +768,134 @@
       background: rgba(59, 130, 246, 0.1);
     }
 
+    /* Modern Certifications Section */
     .certifications {
-      margin-top: 3.5rem;
-      padding: 1.5rem 0 0;
-      border-top: 1px solid var(--border-color);
+      margin-top: 4rem;
+      padding: 3rem 0 0;
     }
 
     .certifications h3 {
-      font-size: 1.35rem;
-      font-weight: 600;
+      font-size: 1.75rem;
+      font-weight: 700;
       color: var(--text-white);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
     }
 
-    .certifications p {
-      color: rgba(255,255,255,0.6);
-      margin-bottom: 1rem;
+    .certifications h3 i {
+      color: var(--accent-blue);
     }
 
-    .cert-timeline {
-      position: relative;
-      padding: 0.25rem 0 0.75rem;
-      overflow-x: auto;
+    .certifications > p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
     }
 
-    .cert-line {
-      display: none;
-    }
-
-    .cert-items {
-      position: relative;
-      display: flex;
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      padding: 0 0.5rem 0.5rem;
-      min-width: 900px;
     }
 
-    .cert-item {
-      min-width: 210px;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 10px;
-      padding: 0.75rem 0.75rem 0.5rem;
+    .cert-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
       position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
     }
 
-    .cert-item::before {
+    .cert-card::before {
       content: '';
       position: absolute;
-      top: -10px;
-      left: 16px;
-      width: 10px;
-      height: 10px;
-      background: var(--accent-blue);
-      border-radius: 50%;
-      border: 2px solid var(--bg-primary);
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--accent-blue), var(--accent-teal));
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .cert-date {
-      font-size: 0.8rem;
-      color: var(--accent-teal);
+    .cert-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-blue);
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
+    }
+
+    .cert-card:hover::before {
+      opacity: 1;
+    }
+
+    .cert-status {
+      display: inline-block;
+      padding: 0.35rem 0.85rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
       font-weight: 600;
-      margin-bottom: 0.25rem;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cert-status.in-progress {
+      background: rgba(251, 191, 36, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .cert-status.completed {
+      background: rgba(34, 197, 94, 0.15);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.3);
     }
 
     .cert-title {
-      font-size: 0.95rem;
+      font-size: 1.1rem;
       font-weight: 600;
       color: var(--text-white);
-      margin-bottom: 0.2rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .cert-subtitle {
+      font-size: 0.95rem;
+      color: var(--accent-blue);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .cert-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: auto;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
 
     .cert-issuer {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .cert-issuer i {
+      font-size: 0.85rem;
+      color: var(--accent-teal);
+    }
+
+    .cert-date {
       font-size: 0.85rem;
       color: rgba(255,255,255,0.6);
+      margin-left: auto;
     }
 
     /* Downloads Section */
@@ -1502,55 +1553,66 @@
       </div>
 
       <div class="certifications">
-        <h3><i class="fas fa-certificate"></i> Zertifizierungen (Timeline)</h3>
-        <p>Horizontale Übersicht der wichtigsten Zertifikate.</p>
-        <div class="cert-timeline">
-          <div class="cert-line"></div>
-          <div class="cert-items">
-            <div class="cert-item">
-              <div class="cert-date">Juni 2026 · in progress</div>
-              <div class="cert-title">Azure AZ-305 – Cloud Solution Specialist</div>
-              <div class="cert-issuer">Microsoft</div>
+        <h3><i class="fas fa-certificate"></i> Zertifizierungen & Weiterbildung</h3>
+        <p>Kontinuierliche Weiterentwicklung in Cloud-Technologien und Requirements Engineering</p>
+        <div class="cert-grid">
+          <div class="cert-card">
+            <span class="cert-status in-progress">In Arbeit</span>
+            <div class="cert-title">Azure AZ-305</div>
+            <div class="cert-subtitle">Cloud Solution Specialist</div>
+            <div class="cert-meta">
+              <span class="cert-issuer"><i class="fas fa-building"></i> Microsoft</span>
+              <span class="cert-date">Juni 2026</span>
             </div>
-            <div class="cert-item">
-              <div class="cert-date">März 2026 · in progress</div>
-              <div class="cert-title">Cloud Architect (AVAZ)</div>
-              <div class="cert-issuer">Velptec GmbH</div>
+          </div>
+          
+          <div class="cert-card">
+            <span class="cert-status in-progress">In Arbeit</span>
+            <div class="cert-title">Cloud Architect (AVAZ)</div>
+            <div class="cert-subtitle">Velptec GmbH</div>
+            <div class="cert-meta">
+              <span class="cert-issuer"><i class="fas fa-building"></i> Velptec</span>
+              <span class="cert-date">März 2026</span>
             </div>
-            <div class="cert-item">
-              <div class="cert-date">Jan. 2026</div>
-              <div class="cert-title">Generative KI in der Praxis</div>
-              <div class="cert-issuer">SoloLearn</div>
+          </div>
+          
+          <div class="cert-card">
+            <span class="cert-status completed">Abgeschlossen</span>
+            <div class="cert-title">IREB Advanced RE@Agile</div>
+            <div class="cert-subtitle">Practitioner</div>
+            <div class="cert-meta">
+              <span class="cert-issuer"><i class="fas fa-building"></i> iSQI Group</span>
+              <span class="cert-date">Dez. 2024</span>
             </div>
-            <div class="cert-item">
-              <div class="cert-date">Dez. 2025</div>
-              <div class="cert-title">AI-Coding</div>
-              <div class="cert-issuer">SoloLearn</div>
+          </div>
+          
+          <div class="cert-card">
+            <span class="cert-status completed">Abgeschlossen</span>
+            <div class="cert-title">Certified Scrum Product Owner</div>
+            <div class="cert-subtitle">EXIN</div>
+            <div class="cert-meta">
+              <span class="cert-issuer"><i class="fas fa-building"></i> EXIN</span>
+              <span class="cert-date">Feb. 2022</span>
             </div>
-            <div class="cert-item">
-              <div class="cert-date">Dez. 2024</div>
-              <div class="cert-title">IREB Advanced RE@Agile Practitioner</div>
-              <div class="cert-issuer">iSQI Group</div>
+          </div>
+          
+          <div class="cert-card">
+            <span class="cert-status completed">Abgeschlossen</span>
+            <div class="cert-title">Generative KI in der Praxis</div>
+            <div class="cert-subtitle">SoloLearn</div>
+            <div class="cert-meta">
+              <span class="cert-issuer"><i class="fas fa-building"></i> SoloLearn</span>
+              <span class="cert-date">Jan. 2026</span>
             </div>
-            <div class="cert-item">
-              <div class="cert-date">Okt. 2024</div>
-              <div class="cert-title">IREB Practitioner</div>
-              <div class="cert-issuer">iSQI Group</div>
-            </div>
-            <div class="cert-item">
-              <div class="cert-date">Feb. 2022</div>
-              <div class="cert-title">Certified Scrum Product Owner</div>
-              <div class="cert-issuer">EXIN</div>
-            </div>
-            <div class="cert-item">
-              <div class="cert-date">Jan. 2022</div>
-              <div class="cert-title">Scrum Master Certified</div>
-              <div class="cert-issuer">EXIN</div>
-            </div>
-            <div class="cert-item">
-              <div class="cert-date">Jan. 2022</div>
-              <div class="cert-title">Scrum Foundation</div>
-              <div class="cert-issuer">EXIN</div>
+          </div>
+          
+          <div class="cert-card">
+            <span class="cert-status completed">Abgeschlossen</span>
+            <div class="cert-title">AI-Coding</div>
+            <div class="cert-subtitle">SoloLearn</div>
+            <div class="cert-meta">
+              <span class="cert-issuer"><i class="fas fa-building"></i> SoloLearn</span>
+              <span class="cert-date">Dez. 2025</span>
             </div>
           </div>
         </div>
