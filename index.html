@@ -2907,6 +2907,14 @@
       });
     });
 
+    // Mini Service Cards hover sound
+    var serviceCards = document.querySelectorAll('.hero-service-card');
+    serviceCards.forEach(function(card) {
+      card.addEventListener('mouseenter', function() {
+        playHoverSound();
+      });
+    });
+
     // Navigation links hover sound
     var navLinks = document.querySelectorAll('.nav-links a, .nav-contact, .logo');
     navLinks.forEach(function(link) {
