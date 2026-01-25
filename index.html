@@ -2039,6 +2039,47 @@
         "sidebar main main"
         "footer footer footer";
     }
+
+    /* Interactive States - Button States */
+    .button {
+      /* Normal State */
+      background-color: #007bff;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;  /* Smooth Übergang */
+    }
+
+    .button:hover {
+      /* Maus drüber */
+      background-color: #0056b3;  /* Dunkler */
+      transform: translateY(-2px); /* Leicht nach oben */
+      box-shadow: 0 4px 12px rgba(0,123,255,0.3);
+    }
+
+    .button:focus {
+      /* Tastatur-Navigation */
+      outline: 2px solid #007bff;
+      outline-offset: 2px;
+    }
+
+    .button:active {
+      /* Beim Klicken */
+      transform: translateY(0);    /* Zurück nach unten */
+      box-shadow: 0 2px 4px rgba(0,123,255,0.2);
+    }
+
+    /* Interactive States - Card Hover */
+    .expertise-card {
+      transition: all 0.3s ease;
+    }
+
+    .expertise-card:hover {
+      transform: scale(1.05);      /* 5% größer */
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
   </style>
 </head>
 <body>
