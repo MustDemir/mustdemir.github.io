@@ -1975,6 +1975,21 @@
     .footer p {
       color: rgba(255,255,255,0.7);
     }
+
+    /* Vorher: Kompliziert mit float/position */
+    .old-way {
+      float: left;
+      width: 33.33%;
+      margin-right: 20px;
+    }
+
+    /* Nachher: Einfach mit Flexbox */
+    .container {
+      display: flex;           /* Aktiviert Flexbox */
+      justify-content: center; /* Horizontal zentrieren */
+      align-items: center;     /* Vertikal zentrieren */
+      gap: 1rem;              /* Abstand zwischen Elementen */
+    }
   </style>
 </head>
 <body>
