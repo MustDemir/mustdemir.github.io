@@ -553,22 +553,37 @@
       font-weight: 500;
       font-size: 0.95rem;
       transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
-    
+
+    .nav-links a i {
+      transition: transform 0.3s;
+    }
+
     .nav-links a:hover {
       color: var(--accent-blue);
     }
-    
-    .nav-contact {
-      background: var(--accent-blue);
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      color: var(--text-white);
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s;
+
+    .nav-links a:hover i {
+      transform: scale(1.2);
     }
-    
+
+    .nav-contact {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-contact i {
+      transition: transform 0.3s;
+    }
+
+    .nav-contact:hover i {
+      transform: scale(1.2);
+    }
+
     .nav-contact:hover {
       background: #2563eb;
     }
@@ -2126,14 +2141,14 @@
       Mustafa<span>Demir</span>
     </a>
     <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#experience">Erfahrung</a></li>
-      <li><a href="#achievements">Erfolge</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#downloads">Downloads</a></li>
+      <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="#services"><i class="fas fa-rocket"></i> Services</a></li>
+      <li><a href="#experience"><i class="fas fa-briefcase"></i> Erfahrung</a></li>
+      <li><a href="#achievements"><i class="fas fa-trophy"></i> Erfolge</a></li>
+      <li><a href="#skills"><i class="fas fa-code"></i> Skills</a></li>
+      <li><a href="#downloads"><i class="fas fa-download"></i> Downloads</a></li>
     </ul>
-    <a href="#contact" class="nav-contact">Kontakt</a>
+    <a href="#contact" class="nav-contact"><i class="fas fa-heart"></i> Kontakt</a>
     <button class="theme-toggle" id="themeToggle" title="Theme wechseln">
       <i class="fas fa-sun"></i>
     </button>
