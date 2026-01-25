@@ -1139,13 +1139,40 @@
       
       /* Mobile Fix - Leeren Platz entfernen */
       .hero {
-        min-height: auto;
-        padding: 2rem 1.5rem;
-        margin-bottom: 0;
+        min-height: auto !important;
+        height: auto !important;
+        padding: 1rem 1rem 0.5rem !important;
+        margin-bottom: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      
+      .hero-container {
+        gap: 1rem !important;
+        padding-bottom: 0 !important;
       }
       
       .hero-grid {
-        min-height: auto;
+        min-height: auto !important;
+        gap: 1rem !important;
+      }
+      
+      .hero-content {
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+      }
+      
+      .hero-image-container {
+        height: 280px !important;
+        margin-top: 0.5rem !important;
+        margin-bottom: 0 !important;
+      }
+      
+      /* Nächste Sektion direkt anschließen */
+      #expertise,
+      .hero + section,
+      .hero ~ section:first-of-type {
+        margin-top: 0 !important;
+        padding-top: 1.5rem !important;
       }
       
       .expertise-grid {
@@ -1154,7 +1181,7 @@
       }
       
       #expertise {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem !important;
       }
       
       section {
