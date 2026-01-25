@@ -7,10 +7,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    /* 1. Box-sizing für alle */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      /* = Padding/Border werden in width/height eingerechnet */
+    }
+
+    /* 2. Margin/Padding zurücksetzen */
     * {
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+    }
+
+    /* 3. Body-Grundlagen */
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      /* = Nutzt System-Schrift (schneller, nativer Look) */
+      line-height: 1.6;        /* Bessere Lesbarkeit */
+      color: #333;
+      background-color: #fff;
+    }
+
+    /* 4. Bilder responsive */
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* 5. Listen ohne Punkte */
+    ul, ol {
+      list-style: none;
+    }
+
+    /* 6. Links ohne Unterstrich */
+    a {
+      text-decoration: none;
+      color: inherit;
     }
     
     :root {
