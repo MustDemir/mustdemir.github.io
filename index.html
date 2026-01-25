@@ -992,6 +992,9 @@
     .stack-ba .stack-layer { background: linear-gradient(135deg, rgba(168,85,247,0.22), rgba(139,92,246,0.24)); }
     .stack-ba .stack-icon { background: linear-gradient(135deg, #a855f7, #8b5cf6); }
 
+    /* ===== RESPONSIVE MOBILE STYLES ===== */
+    
+    /* Tablet: 768px - 960px */
     @media (max-width: 960px) {
       .expertise-grid {
         grid-template-columns: 1fr;
@@ -999,6 +1002,184 @@
 
       .stack-layer.layer-2 { transform: translate(18px, 18px); }
       .stack-layer.layer-3 { transform: translate(28px, 28px); }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .downloads-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    /* Mobile: unter 768px */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+      
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .hero-services {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      
+      .hero-image-container {
+        height: 400px;
+        margin-top: 2rem;
+        transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+      }
+      
+      .expertise-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      .achievements-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .certs-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .downloads-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      
+      /* Sections Padding */
+      .experience,
+      .skills,
+      .certifications,
+      .downloads,
+      .contact,
+      .achievements {
+        padding: 3rem 1.5rem;
+      }
+      
+      /* Expertise Section */
+      #expertise .expertise-container {
+        padding: 0 1rem;
+      }
+      
+      /* Navigation */
+      .nav {
+        padding: 0.75rem 1rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      /* Typography */
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .section-title {
+        font-size: 1.75rem;
+      }
+      
+      /* Stack Cards */
+      .stack-card {
+        padding: 1.5rem;
+      }
+      
+      .stack-layer.layer-1 { transform: translate(8px, 8px); }
+      .stack-layer.layer-2 { transform: translate(14px, 14px); }
+      .stack-layer.layer-3 { transform: translate(20px, 20px); }
+      
+      /* Timeline */
+      .timeline-entry {
+        width: 100%;
+      }
+      
+      /* 3D Effects reduziert für Mobile Performance */
+      .hero-service-card:hover,
+      .stack-card:hover,
+      .timeline-entry:hover,
+      .skill-category:hover,
+      .cert-card:hover,
+      .download-card:hover {
+        transform: translateY(-5px);
+      }
+      
+      /* Floating Animation aus für Mobile */
+      .profile-img {
+        animation: none;
+      }
+    }
+    
+    /* Sehr kleine Handys: unter 480px */
+    @media (max-width: 480px) {
+      .hero {
+        padding: 1.5rem 1rem;
+      }
+      
+      .hero-title {
+        font-size: 1.75rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+      
+      .hero-image-container {
+        height: 320px;
+      }
+      
+      .stat-item,
+      .skill-category,
+      .download-card,
+      .contact-card {
+        padding: 1.25rem;
+      }
+      
+      .timeline-entry {
+        padding: 1.25rem 1rem;
+      }
+      
+      .stack-card {
+        padding: 1.25rem;
+      }
+      
+      .expertise-list li {
+        font-size: 0.9rem;
+      }
+      
+      .theme-toggle {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+      }
     }
     
     /* Experience Section with Modern Timeline */
