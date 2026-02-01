@@ -22,10 +22,9 @@
     /* 3. Body-Grundlagen */
     body {
       font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-      /* = Nutzt System-Schrift (schneller, nativer Look) */
-      line-height: 1.6;        /* Bessere Lesbarkeit */
-      color: #333;
-      background-color: #fff;
+      line-height: 1.6;
+      color: hsl(var(--foreground));
+      background: hsl(var(--background));
     }
 
     /* 4. Bilder responsive */
@@ -270,228 +269,111 @@
       border-radius: 18px;
       overflow: visible;
       cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.35s, box-shadow 0.35s, border-color 0.35s, opacity 0.35s;
+      border: 1.5px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(12px);
+      se-filter: blur(12px);
       box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-      transform-style: preserve-3d;
-      transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
+      animation: cardFadeIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
+    .stack-card:nth-child(1) { animation-delay: 0.05s; }
+    .stack-card:nth-child(2) { animation-delay: 0.15s; }
+    .stack-card:nth-child(3) { animation-delay: 0.25s; }
+     stack-card:nth-child(4) { animation-delay: 0.35s; }
     .stack-card:hover {
-      transform: perspective(1000px) rotateX(-8deg) rotateY(5deg) translateZ(30px) translateY(-10px);
-      box-shadow: 
-        0 35px 80px rgba(0,0,0,0.4),
-        0 0 0 1px rgba(255,255,255,0.15) inset;
-      border-color: rgba(255,255,255,0.2);
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 30px 80px rgba(59,130,246,0.18), 0 0 0 2px rgba(59,130,246,0.08) inset;
+      border-color: #3b82f6;
+      opacity: 1;
     }
 
-    .stack-card.active {
-      transform: perspective(1000px) rotateX(-5deg) translateZ(50px) translateY(-15px) scale(1.02);
-      z-index: 5;
-      box-shadow: 
-        0 50px 100px rgba(0,0,0,0.5),
-        0 0 0 1px rgba(255,255,255,0.25) inset;
-      border-color: rgba(255,255,255,0.3);
-    }
-
-    .timeline-entry {
-      position: relative;
-      width: calc(50% - 2rem);
-      background: var(--bg-primary);
-      border: 1px solid var(--border-color);
-      border-radius: 14px;
-      padding: 1.75rem 1.5rem;
-      margin-bottom: 2.5rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transform: scale(1);
-      z-index: 1;
-      transition: all 0.3s ease;
-      will-change: transform;
-      backface-visibility: hidden;
-    }
-
-    .timeline-entry:hover {
-      transform: scale(1.05) translateY(-5px);
-      z-index: 10;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-      border-color: var(--accent-blue);
-    }
-
-    .skill-category {
-      background: var(--bg-primary);
-      border-radius: 16px;
-      padding: 2rem;
-      border: 1px solid var(--border-color);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transform-style: preserve-3d;
-      transform: perspective(1000px) rotateX(0deg);
-    }
-
-    .skill-category:hover {
-      transform: perspective(1000px) rotateX(-6deg) translateZ(20px) translateY(-8px);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-    }
-
-    .cert-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      transform-style: preserve-3d;
-      transform: perspective(1000px) rotateX(0deg);
-    }
-
-    .cert-card:hover {
-      transform: perspective(1000px) rotateX(-8deg) translateZ(25px) translateY(-8px);
-      border-color: var(--accent-blue);
-      box-shadow: 
-        0 30px 60px rgba(59, 130, 246, 0.2),
-        0 0 0 1px rgba(59, 130, 246, 0.2) inset;
-    }
-
-    /* Progress Bar für Zertifizierungen */
-    .cert-progress {
-      margin-top: 1rem;
-      padding-top: 1rem;
-      border-top: 1px solid var(--border-color);
-    }
-
-    .cert-progress-label {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .cert-progress-percent {
-      font-weight: 600;
-      color: var(--accent-blue);
-    }
-
-    .cert-progress-bar {
-      height: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .cert-progress-fill {
-      height: 100%;
-      border-radius: 10px;
-      background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-teal) 100%);
-      position: relative;
-      transition: width 1s ease-out;
-      animation: progressPulse 2s ease-in-out infinite;
-    }
-
-    .cert-progress-fill::after {
-      content: '';
+    .stack-layer {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-      animation: progressShine 2s ease-in-out infinite;
-    }
-
-    @keyframes progressPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.85; }
-    }
-
-    @keyframes progressShine {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
-    body.light-mode .cert-progress-label {
-      color: #64748b;
-    }
-
-    body.light-mode .cert-progress-bar {
-      background: rgba(0, 0, 0, 0.1);
-    }
-
-    .download-card {
-      background: var(--bg-secondary);
-      border-radius: 16px;
-      padding: 2rem;
-      border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      min-height: 220px;
-      transform-style: preserve-3d;
-      transform: perspective(1000px) rotateX(0deg);
-    }
-
-    .download-card:hover {
-      transform: perspective(1000px) rotateX(-6deg) translateZ(20px) translateY(-10px);
-    }
-
-    /* Parallax Layers */
-    .parallax-section {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .parallax-bg {
-      position: absolute;
-      inset: -50px;
-      background: radial-gradient(ellipse at center, rgba(59, 130, 246, 0.08) 0%, transparent 70%);
-      transform: translateZ(-1px) scale(1.5);
-      pointer-events: none;
+      inset: 0;
+      border-radius: 18px;
       z-index: -1;
+      transition: transform 0.35s, opacity 0.35s, filter 0.35s;
+      opacity: 0.85;
+      pointer-events: none;
     }
 
-    .hero-image-container {
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      height: 615px;
-      background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
-      margin-top: 5.5rem;
-      transition: transform 0.6s ease;
-      box-shadow: 
-        -30px 30px 60px rgba(0,0,0,0.4),
-        0 0 0 1px rgba(255,255,255,0.05) inset;
+    .stack-card:hover .stack-layer {
+      opacity: 1;
+      filter: blur(2px);
     }
 
-    .hero-image-container:hover {
-      transform: scale(1.02);
+    .stack-head {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
     }
 
-    /* Floating Animation for depth */
-    @keyframes float {
-      0%, 100% { transform: translateY(0) translateZ(0); }
-      50% { transform: translateY(-10px) translateZ(10px); }
+    .stack-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 1.8rem;
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px);
     }
 
-    .profile-img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center 15%;
-      border: 4px solid var(--accent-blue);
-      box-shadow: 
-        0 0 40px rgba(59, 130, 246, 0.4),
-        0 20px 40px rgba(0,0,0,0.3);
-      margin-bottom: 1.5rem;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      animation: float 6s ease-in-out infinite;
+    .stack-cloud .stack-icon { background: linear-gradient(135deg, #3b82f6, #0ea5e9); }
+    .stack-re .stack-icon { background: linear-gradient(135deg, #22c55e, #10b981); }
+    .stack-auto .stack-icon { background: linear-gradient(135deg, #f97316, #fb923c); }
+    .stack-ba .stack-icon { background: linear-gradient(135deg, #a855f7, #8b5cf6); }
+    .stack-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0;
+    }
+
+    .stack-subtitle {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .stack-credentials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin: 1rem 0 1.25rem;
+    }
+
+    .stack-pill {
+      background: rgba(59,130,246,0.12);
+      color: #3b82f6;
+      border: 1px solid rgba(59,130,246,0.18);
+      font-weight: 600;
+      font-size: 0.92rem;
+      padding: 0.38rem 1rem;
+      border-radius: 999px;
+      transition: background 0.2s, color 0.2s, border 0.2s;
+    }
+
+    .stack-pill:hover {
+      background: rgba(20,184,166,0.18);
+      color: #14b8a6;
+      border-color: #14b8a6;
+    }
+
+    .stack-desc {
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+      font-size: 0.96rem;
+    }
+
+    /* Modernisierung und Vereinheitlichung der Expertise Cards */
+    @keyframes cardFadeIn {
+      from { opacity: 0; transform: translateY(30px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* 3D Button Effects */
@@ -520,10 +402,8 @@
       color: var(--text-white);
       text-decoration: none;
       font-weight: 600;
-      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: background 0.3s, transform 0.3s;
       margin-top: auto;
-      transform-style: preserve-3d;
-      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
     }
 
     .download-button:hover {
@@ -730,12 +610,11 @@
     }
     
     .btn-primary {
-      background: var(--accent-blue);
-      color: var(--text-white);
+      background: hsl(var(--primary));
+      color: hsl(var(--primary-foreground));
     }
-    
     .btn-primary:hover {
-      background: #2563eb;
+      background: hsl(var(--accent));
       transform: translateY(-2px);
     }
     
@@ -763,6 +642,8 @@
       border-radius: 12px;
       padding: 1.25rem;
       transition: all 0.3s;
+        background: hsl(var(--card));
+        border: 1px solid hsl(var(--border));
     }
     
     .hero-service-card:hover {
@@ -849,7 +730,9 @@
       object-fit: cover;
       object-position: center 15%;
       border: 4px solid var(--accent-blue);
-      box-shadow: 0 0 40px rgba(59, 130, 246, 0.4);
+      box-shadow: 
+        0 0 40px rgba(59, 130, 246, 0.4),
+        0 20px 40px rgba(0,0,0,0.3);
       margin-bottom: 1.5rem;
       display: block;
       margin-left: auto;
@@ -1030,7 +913,7 @@
       transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
       border: 1px solid rgba(255,255,255,0.06);
       background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(12px);
+      se-filter: blur(12px);
       box-shadow: 0 20px 60px rgba(0,0,0,0.35);
     }
 
@@ -1052,7 +935,7 @@
       inset: 0;
       border-radius: 18px;
       z-index: -1;
-      transition: transform 0.35s ease, opacity 0.35s ease;
+      transition: transform 0.35s ease, opacity 0.35s ease, filter 0.35s;
       opacity: 0.85;
     }
 
@@ -2215,22 +2098,21 @@
 <nav class="navbar">
   <div class="nav-container">
     <a href="#" class="logo">
-      Mustafa<span>Demir</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="#services"><i class="fas fa-rocket"></i> Expertise</a></li>
-      <li><a href="#experience"><i class="fas fa-briefcase"></i> Erfahrung</a></li>
-      <li><a href="#achievements"><i class="fas fa-trophy"></i> Erfolge</a></li>
-      <li><a href="#skills"><i class="fas fa-certificate"></i> Zertifikate</a></li>
-      <li><a href="#techskills"><i class="fas fa-code"></i> Skills</a></li>
-      <li><a href="#downloads"><i class="fas fa-download"></i> Downloads</a></li>
-    </ul>
-    <a href="#contact" class="nav-contact"><i class="fas fa-heart"></i> Kontakt</a>
-    <button class="theme-toggle" id="themeToggle" title="Theme wechseln">
-      <i class="fas fa-sun"></i>
-    </button>
-  </div>
+        <span class="text-xl font-bold" style="color: hsl(var(--foreground));">Mustafa<span style="color: hsl(var(--primary));">Demir</span></span>
+      </a>
+      <ul class="nav-links desktop-nav" style="display: flex; gap: 2.5rem; list-style: none; align-items: center;">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#expertise" class="nav-link">Expertise</a></li>
+        <li><a href="#experience" class="nav-link">Erfahrung</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#downloads" class="nav-link">Downloads</a></li>
+      </ul>
+      <div class="nav-cta desktop-nav" style="display: flex; gap: 1rem; align-items: center;">
+        <a href="https://linkedin.com/in/mustafa-demir" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" title="LinkedIn" style="padding: 0.5rem 1rem; display: flex; align-items: center;"><i class="fab fa-linkedin"></i></a>
+        <a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.2rem; display: flex; align-items: center;"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>Kontakt</a>
+        <a href="#downloads" class="btn btn-primary" style="padding: 0.5rem 1.2rem; display: flex; align-items: center;"><i class="fas fa-download" style="margin-right: 0.5rem;"></i>CV</a>
+      </div>
+    </div>
 </nav>
 
   <!-- Hero Section -->
@@ -2265,7 +2147,7 @@
           <div class="hero-service-card auto-card">
             <div class="hero-service-icon"><i class="fas fa-car"></i></div>
             <h4>Automotive</h4>
-            <p>E-Mobilität & HV</p>
+            <p>E-Mobility & HV</p>
           </div>
           <div class="hero-service-card ba-card">
             <div class="hero-service-icon"><i class="fas fa-clipboard-list"></i></div>
@@ -2361,7 +2243,7 @@
             <span class="stack-pill">MB.OS Digitale Produktentwicklung</span>
             <span class="stack-pill">E-Mobility Prozesse</span>
           </div>
-          <p class="stack-desc">Hochvoltbatterien, E-Mobilität, Automotive-Prozesse.</p>
+          <p class="stack-desc">Hochvoltbatterien, E-Mobility, Automotive-Prozesse.</p>
         </div>
 
         <div class="stack-card stack-ba" data-stack="ba">
@@ -2415,7 +2297,7 @@
           <span class="timeline-date">Dez. 2023 – Juli 2025</span>
           <h3 class="timeline-role">Projektleiter E-Mobility & Agile Prozesse</h3>
           <div class="timeline-company">Mercedes-AMG GmbH</div>
-          <p class="timeline-desc">Einführung agiler Toolchains und Steuerung von E-Mobility-Prozesse.</p>
+          <p class="timeline-desc">Einführung agiler Toolchains und Steuerung von E-Mobility-Prozessen.</p>
           <ul class="timeline-list">
             <li>Jira & Confluence für Task- und Wissensmanagement eingeführt</li>
             <li>Jira-basiertes Fehlermanagement konzipiert und gerollt</li>
@@ -2780,7 +2662,7 @@
             <span class="skill-tag">MS-Operation Systems</span>
             <span class="skill-tag">E/E Architecture</span>
             <span class="skill-tag">Hochvoltbatterien</span>
-            <span class="skill-tag">E-Mobilität</span>
+            <span class="skill-tag">E-Mobility</span>
 
           </div>
         </div>
