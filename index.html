@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=1400">
   <title>Mustafa Demir | AI & Cloud Solution Architect | Stuttgart</title>
   <meta name="description" content="Mustafa Demir – AI & Cloud Solution Architect mit Business-Verantwortung. Ich übersetze Business-Ziele in produktionsreife Cloud- & KI-Architekturen. Standort: Stuttgart.">
   <meta name="author" content="Mustafa Demir">
@@ -374,7 +374,7 @@
       background: var(--bg-primary);
       color: var(--text-white);
       line-height: 1.6;
-      min-width: 0;
+      min-width: 1400px;
     }
     
     /* Navigation */
@@ -1060,14 +1060,12 @@
       }
       
       /* Sections Padding */
-      .expertise,
       .experience,
       .skills,
       .certifications,
       .downloads,
       .contact,
-      .achievements,
-      .stats {
+      .achievements {
         padding: 3rem 1.5rem;
       }
       
@@ -1138,7 +1136,6 @@
       .hero-image-container {
         height: 280px;
         margin-top: 0.5rem;
-        padding: 2rem 1.5rem;
       }
 
       /* Einheitliches Section-Spacing Mobile */
@@ -1161,86 +1158,6 @@
       }
     }
     
-    /* Hamburger Menu Button */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      justify-content: center;
-      gap: 5px;
-      width: 40px;
-      height: 40px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 100%;
-      height: 2px;
-      background: var(--text-white);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-      transform-origin: center;
-    }
-
-    .hamburger.open span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .hamburger.open span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .hamburger.open span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Mobile Nav Overlay */
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 65px;
-      left: 0;
-      right: 0;
-      background: rgba(15, 23, 42, 0.98);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
-      padding: 1.5rem 2rem;
-      z-index: 999;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .mobile-nav.open {
-      display: flex;
-    }
-
-    .mobile-nav a {
-      padding: 0.9rem 0;
-      border-bottom: 1px solid var(--border-color);
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-white);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      transition: color 0.2s;
-    }
-
-    .mobile-nav a:last-child {
-      border-bottom: none;
-    }
-
-    .mobile-nav a:hover {
-      color: var(--accent-blue);
-    }
-
-    body.light-mode .mobile-nav {
-      background: rgba(248, 250, 252, 0.98);
-    }
-
     /* Scroll-to-top Button */
     .scroll-top {
       position: fixed;
@@ -1276,34 +1193,9 @@
       transform: translateY(-2px);
     }
 
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-
-      .desktop-nav {
-        display: none !important;
-      }
-
-      .navbar {
-        padding: 0.75rem 1.25rem;
-      }
-    }
-
     /* Sehr kleine Handys: unter 480px */
     @media (max-width: 480px) {
       section {
-        padding: 2.5rem 1rem;
-      }
-
-      .expertise,
-      .experience,
-      .skills,
-      .certifications,
-      .downloads,
-      .contact,
-      .achievements,
-      .stats {
         padding: 2.5rem 1rem;
       }
 
@@ -2213,7 +2105,7 @@
     /* Footer */
     .footer {
       background: var(--bg-secondary);
-      padding: 2rem clamp(1.25rem, 5vw, 4rem);
+      padding: 2rem 4rem;
       text-align: center;
       border-top: 1px solid var(--border-color);
     }
@@ -2314,24 +2206,8 @@
         <a href="#contact" class="btn btn-primary" style="padding: 0.5rem 1.2rem; display: flex; align-items: center;"><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>Kontakt</a>
         <a href="#downloads" class="btn btn-primary" style="padding: 0.5rem 1.2rem; display: flex; align-items: center;"><i class="fas fa-download" style="margin-right: 0.5rem;"></i>CV</a>
       </div>
-      <button class="hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
     </div>
 </nav>
-
-<!-- Mobile Navigation -->
-<div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile Navigation">
-  <a href="#home" onclick="closeMobileNav()"><i class="fas fa-home"></i> Home</a>
-  <a href="#expertise" onclick="closeMobileNav()"><i class="fas fa-rocket"></i> Expertise</a>
-  <a href="#experience" onclick="closeMobileNav()"><i class="fas fa-briefcase"></i> Erfahrung</a>
-  <a href="#skills" onclick="closeMobileNav()"><i class="fas fa-layer-group"></i> Skills</a>
-  <a href="#downloads" onclick="closeMobileNav()"><i class="fas fa-download"></i> Downloads</a>
-  <a href="#contact" onclick="closeMobileNav()"><i class="fas fa-envelope"></i> Kontakt</a>
-  <a href="https://www.linkedin.com/in/mustafa-demir-331900202/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin"></i> LinkedIn</a>
-</div>
 
   <!-- Hero Section -->
   <section class="hero" id="home">
@@ -3183,30 +3059,6 @@
   </button>
 
   <script>
-    // Hamburger Menu
-    var hamburger = document.getElementById('hamburger');
-    var mobileNav = document.getElementById('mobileNav');
-
-    hamburger.addEventListener('click', function() {
-      var isOpen = mobileNav.classList.contains('open');
-      mobileNav.classList.toggle('open');
-      hamburger.classList.toggle('open');
-      hamburger.setAttribute('aria-expanded', !isOpen);
-    });
-
-    function closeMobileNav() {
-      mobileNav.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    }
-
-    // Close mobile nav on outside click
-    document.addEventListener('click', function(e) {
-      if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
-        closeMobileNav();
-      }
-    });
-
     function toggleAccordion(header) {
       var item = header.parentElement;
       var isActive = item.classList.contains('active');
@@ -3288,7 +3140,7 @@
 
     // Scroll-Spy: aktive Section im Nav markieren
     var spySections = document.querySelectorAll('section[id]');
-    var allNavLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
+    var allNavLinks = document.querySelectorAll('.nav-links a');
 
     var spyObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
