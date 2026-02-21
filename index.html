@@ -443,7 +443,8 @@
       transition: transform 0.3s;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover,
+    .nav-links a.nav-active {
       color: var(--accent-blue);
     }
 
@@ -1059,12 +1060,14 @@
       }
       
       /* Sections Padding */
+      .expertise,
       .experience,
       .skills,
       .certifications,
       .downloads,
       .contact,
-      .achievements {
+      .achievements,
+      .stats {
         padding: 3rem 1.5rem;
       }
       
@@ -1135,6 +1138,7 @@
       .hero-image-container {
         height: 280px;
         margin-top: 0.5rem;
+        padding: 2rem 1.5rem;
       }
 
       /* Einheitliches Section-Spacing Mobile */
@@ -1237,6 +1241,41 @@
       background: rgba(248, 250, 252, 0.98);
     }
 
+    /* Scroll-to-top Button */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px;
+      height: 44px;
+      background: var(--accent-blue);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      cursor: pointer;
+      z-index: 998;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.3s, visibility 0.3s, transform 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px rgba(59,130,246,0.4);
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .scroll-top:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+    }
+
     @media (max-width: 768px) {
       .hamburger {
         display: flex;
@@ -1245,11 +1284,26 @@
       .desktop-nav {
         display: none !important;
       }
+
+      .navbar {
+        padding: 0.75rem 1.25rem;
+      }
     }
 
     /* Sehr kleine Handys: unter 480px */
     @media (max-width: 480px) {
       section {
+        padding: 2.5rem 1rem;
+      }
+
+      .expertise,
+      .experience,
+      .skills,
+      .certifications,
+      .downloads,
+      .contact,
+      .achievements,
+      .stats {
         padding: 2.5rem 1rem;
       }
 
@@ -2159,7 +2213,7 @@
     /* Footer */
     .footer {
       background: var(--bg-secondary);
-      padding: 2rem 4rem;
+      padding: 2rem clamp(1.25rem, 5vw, 4rem);
       text-align: center;
       border-top: 1px solid var(--border-color);
     }
@@ -3123,6 +3177,11 @@
     <p>© 2026 Mustafa Demir. Alle Rechte vorbehalten.</p>
   </footer>
 
+  <!-- Scroll to top -->
+  <button class="scroll-top" id="scrollTop" aria-label="Nach oben scrollen" title="Nach oben">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
   <script>
     // Hamburger Menu
     var hamburger = document.getElementById('hamburger');
@@ -3148,46 +3207,7 @@
       }
     });
 
-    // Beep Sound Function - Click
-    function playBeep() {
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.frequency.value = 800;
-      oscillator.type = 'sine';
-      
-      gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-      
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.1);
-    }
-
-    // Hover Sound Function - subtler, höher
-    function playHoverSound() {
-      const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      const oscillator = audioContext.createOscillator();
-      const gainNode = audioContext.createGain();
-      
-      oscillator.connect(gainNode);
-      gainNode.connect(audioContext.destination);
-      
-      oscillator.frequency.value = 1200;
-      oscillator.type = 'sine';
-      
-      gainNode.gain.setValueAtTime(0.15, audioContext.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.05);
-      
-      oscillator.start(audioContext.currentTime);
-      oscillator.stop(audioContext.currentTime + 0.05);
-    }
-
     function toggleAccordion(header) {
-      playBeep();
       var item = header.parentElement;
       var isActive = item.classList.contains('active');
       var container = item.parentElement;
@@ -3221,7 +3241,6 @@
     stacks.forEach(function(card, idx) {
       card.style.zIndex = 20 - idx;
       card.addEventListener('click', function() {
-        playBeep();
         stacks.forEach(function(c, i) {
           c.classList.remove('active');
           c.style.zIndex = 20 - i;
@@ -3243,7 +3262,6 @@
     }
 
     themeToggle.addEventListener('click', function() {
-      playBeep();
       document.body.classList.toggle('light-mode');
       
       if (document.body.classList.contains('light-mode')) {
@@ -3255,93 +3273,40 @@
       }
     });
 
-    // Accordion hover sound
-    var accordionHeaders = document.querySelectorAll('.accordion-header');
-    accordionHeaders.forEach(function(header) {
-      header.addEventListener('mouseenter', function() {
-        playHoverSound();
-      });
+    // Scroll-to-top
+    var scrollTopBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > 300) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    });
+    scrollTopBtn.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Mini Service Cards hover sound
-    var serviceCards = document.querySelectorAll('.hero-service-card');
-    serviceCards.forEach(function(card) {
-      card.addEventListener('mouseenter', function() {
-        playHoverSound();
-      });
-    });
+    // Scroll-Spy: aktive Section im Nav markieren
+    var spySections = document.querySelectorAll('section[id]');
+    var allNavLinks = document.querySelectorAll('.nav-links a, .mobile-nav a');
 
-    // Navigation links hover sound
-    var navLinks = document.querySelectorAll('.nav-links a, .nav-contact, .logo');
-    navLinks.forEach(function(link) {
-      link.addEventListener('mouseenter', function() {
-        playHoverSound();
+    var spyObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.getAttribute('id');
+          allNavLinks.forEach(function(link) {
+            link.classList.remove('nav-active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('nav-active');
+            }
+          });
+        }
       });
-    });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
 
-    // Certification cards hover sound
-    var certCards = document.querySelectorAll('.cert-card');
-    certCards.forEach(function(card) {
-      card.addEventListener('mouseenter', function() {
-        playHoverSound();
-      });
+    spySections.forEach(function(section) {
+      spyObserver.observe(section);
     });
-
-    // Hero page buttons hover sound
-    var heroButtons = document.querySelectorAll('.hero-buttons a, .hero-buttons button');
-    heroButtons.forEach(function(btn) {
-      btn.addEventListener('mouseenter', function() {
-        playHoverSound();
-      });
-    });
-
-    // Timeline entries hover sound
-    var timelineEntries = document.querySelectorAll('.timeline-entry');
-    timelineEntries.forEach(function(entry) {
-      entry.addEventListener('mouseenter', function() {
-        playHoverSound();
-      });
-    });
-
-    // Skill tags hover sound
-    var skillTags = document.querySelectorAll('.skill-tag');
-    skillTags.forEach(function(tag) {
-      tag.addEventListener('mouseenter', function() {
-        playHoverSound();
-      });
-    });
-
-    // Download cards hover sound
-    var downloadCards = document.querySelectorAll('.download-card');
-    downloadCards.forEach(function(card) {
-      card.addEventListener('mouseenter', function() {
-        playHoverSound();
-      });
-    });
-
-    // Contact cards & social links hover sound
-    var contactCards = document.querySelectorAll('.contact-card');
-    contactCards.forEach(function(card) {
-      card.addEventListener('mouseenter', function() {
-        playHoverSound();
-      });
-    });
-
-    var socialLinks = document.querySelectorAll('.social-link');
-    socialLinks.forEach(function(link) {
-      link.addEventListener('mouseenter', function() {
-        playHoverSound();
-      });
-    });
-
-    // Button hover sound
-    var buttons = document.querySelectorAll('button, a.button, .download-button');
-    buttons.forEach(function(btn) {
-      btn.addEventListener('mouseenter', function() {
-        playHoverSound();
-      });
-    });
-
 
   </script>
 </body>
